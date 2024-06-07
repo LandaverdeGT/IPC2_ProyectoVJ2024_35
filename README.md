@@ -1,1 +1,0 @@
-# IPC2_ProyectoVJ2024_35
