@@ -17,16 +17,16 @@ class Login():
         self.entry2 = Entry(self.root, show="*", width=50)
         self.entry2.place(x=200, y=100)
 
-        Button(self.root, text="Login", command=self.Login, width=20, height=3).place(x=200, y=250)
+        Button(self.root, text="Login", command=self.LoginValidate, width=20, height=3).place(x=200, y=250)
         self.root.mainloop()
 
-    def Login(self):
+    def LoginValidate(self):
         if self.entry1.get() == "admin" and self.entry2.get() == "admin":
             messagebox.showinfo("Login", "Login exitoso")
             return True
         elif self.entry1.get() == "" or self.entry2.get() == "":
             return False
-            messagebox.showerror("Login", "Ingrese usuario y contraseña")
+            messagebox.showerror("Login", "Usuario o contraseña incorrectos")
         else:
             return False
             messagebox.showerror("Login", "Usuario o contraseña incorrectos")

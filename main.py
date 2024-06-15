@@ -5,6 +5,6 @@ Integrantes:
 '''
 from tkinter import *
 from tkinter import messagebox
-from Administrator.windows.login import Login
+from Administrator.login import Login
 
 login_window = Login()

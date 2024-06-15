@@ -1,23 +1,22 @@
-from node_double import NodeDouble
+from node import Node
 
 class DoubleList():
-    def __init__(self):
+    def __init__ (self):
         self.head = None
         self.tail = None
         self.size = 0
 
-    def __len__(self):
-        return self.size
-    
     def insert(self, data):
-        newNode = NodeDouble(data)
-        if self.head == None and self.tail == None:
-            self.head = newNode
-            self.tail = newNode
+        new_node = Node(data)
+        current = self.head
+        if self.head == None:
+            self.head = new_node
+            self.tail = new_node
         else:
-            self.tail.next = newNode
-            newNode.prev = self.tail
-            self.tail = newNode
+            if self.tail.next == None:
+                self.tail.next = new_node
+                new_node.prev = self.tail
+                self.tail = new_node
         self.size += 1
 
     def printList(self):
