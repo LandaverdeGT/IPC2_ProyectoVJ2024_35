@@ -1,5 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
+from administratorView import AdministratorView
+
+view_administrator = AdministratorView()
 
 class Login():
     def __init__ (self):
@@ -21,8 +24,10 @@ class Login():
         self.root.mainloop()
 
     def LoginValidate(self):
+        global view_administrator
         if self.entry1.get() == "admin" and self.entry2.get() == "admin":
             messagebox.showinfo("Login", "Login exitoso")
+            view_administrator.__init__()
             return True
         elif self.entry1.get() == "" or self.entry2.get() == "":
             return False
