@@ -23,9 +23,10 @@ class Login():
         self.root.mainloop()
 
     def LoginValidate(self):
+        global adminWindow
         if self.entry1.get() == "admin" and self.entry2.get() == "admin":
             messagebox.showinfo("Login", "Login exitoso")
-            AdministratorView()
+            AdministratorView().__init__()
             return True
         elif self.entry1.get() == "" or self.entry2.get() == "":
             messagebox.showerror("Login", "Ingresa un usuario y contraseña")
