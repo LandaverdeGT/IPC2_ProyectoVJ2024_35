@@ -21,3 +21,4 @@ class SimpleList():
                     break
                 current = current.next
         self.size += 1
+

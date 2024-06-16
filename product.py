@@ -37,4 +37,14 @@ class Product():
         return self.image
     def setImage(self, image):
         self.image = image
+
+    def __str__(self):
+        return f'''
+        ID: {self.id}
+        Precio: {str(self.price)}
+        Descripcion: {self.description}
+        Categoria: {self.category}
+        Cantidad: {str(self.quanty)}
+        Imagen: {self.image}
+        '''
         

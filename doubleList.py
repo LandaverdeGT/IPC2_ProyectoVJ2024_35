@@ -1,10 +1,13 @@
-from node import Node
+from nodeDouble import Node
 
 class DoubleList():
     def __init__ (self):
         self.head = None
         self.tail = None
         self.size = 0
+
+    def __len__(self):
+        return self.size
 
     def insert(self, data):
         new_node = Node(data)
@@ -25,10 +28,7 @@ class DoubleList():
         else:
             current = self.head
             while current != None:
-                print(f'''
-                    ID: {current.data.id}
-                    Name: {current.data.name}
-                    ''')
+                print(current.data)
                 current = current.next
 
     def find_user(self, id):

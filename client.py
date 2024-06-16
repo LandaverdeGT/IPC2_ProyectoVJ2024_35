@@ -2,9 +2,10 @@ from user import User
 
 class Client(User):
     def __init__ (self, id, password, name, age, email, phone):
-        super().__init__(id, userName, password)
+        super().__init__(id, password)
         self.name = name
         self.age = age
+        self.email = email
         self.phone = phone
 
     def __str__(self):

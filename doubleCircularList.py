@@ -45,3 +45,4 @@ class DoubleCircularList():
                 break
             current = current.next
             counter += 1
+        return find
