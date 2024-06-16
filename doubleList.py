@@ -21,9 +21,22 @@ class DoubleList():
 
     def printList(self):
         if self.head == None:
-            print("Lista vacía")
+            return ("Lista vacía")
         else:
             current = self.head
             while current != None:
-                print(current.data)
+                print(f'''
+                    ID: {current.data.id}
+                    Name: {current.data.name}
+                    ''')
                 current = current.next
+
+    def find_user(self, id):
+        findUser = False
+        current = self.head
+        while current != None:
+            if current.data.id == id:
+                findUser = True
+                break
+            current = current.next
+        return findUser

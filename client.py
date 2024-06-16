@@ -1,12 +1,21 @@
 from user import User
 
 class Client(User):
-    def __init__ (self, id, userName, password, name, age, email, phone):
+    def __init__ (self, id, password, name, age, email, phone):
         super().__init__(id, userName, password)
         self.name = name
         self.age = age
-        self.email = email
         self.phone = phone
+
+    def __str__(self):
+        return f'''
+        ID: {self.id}
+        Contraseña: {self.password}
+        Nombre: {self.name}
+        Edad: {self.age}
+        Correo: {self.email}
+        Telefono: {self.phone}
+        '''
 
     #Getters and Setters
     def getName(self):
