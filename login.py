@@ -35,10 +35,6 @@ class Login():
         elif self.entry1.get() == "" or self.entry2.get() == "":
             messagebox.showerror("Login", "Ingresa un usuario y contraseña")
             return False
-        elif list.find_user(self.entry1.get):
-            messagebox.showinfo("Login", "Login exitoso")
-            self.root.destroy()
-            print("Usuario encontrado") 
         else:
             messagebox.showerror("Login", "Usuario o contraseña incorrectos")
             return False
