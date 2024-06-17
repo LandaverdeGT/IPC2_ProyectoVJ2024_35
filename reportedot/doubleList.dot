@@ -1,0 +1,62 @@
+digraph G {
+rankdir=LR;
+node [shape = record, height = .1]
+node0 [label = "{<f1>|
+        ID: IPC2-01
+        Contraseña: 12345
+        Nombre: Usuario1
+        Edad: 23
+        Correo: u1@gmail.com
+        Telefono: 12345678
+        |<f2>}"];
+node1 [label = "{<f1>|
+        ID: IPC2-02
+        Contraseña: 12345
+        Nombre: Usuario2
+        Edad: 25
+        Correo: u2@gmail.com
+        Telefono: 87654321
+        |<f2>}"];
+node2 [label = "{<f1>|
+        ID: IPC2-03
+        Contraseña: 12345
+        Nombre: Usuario3
+        Edad: 25
+        Correo: u3@gmail.com
+        Telefono: 56815687
+        |<f2>}"];
+node3 [label = "{<f1>|
+        ID: IPC2-04
+        Contraseña: 12345
+        Nombre: Usuario4
+        Edad: 25
+        Correo: u4@gmail.com
+        Telefono: 12357487
+        |<f2>}"];
+node4 [label = "{<f1>|
+        ID: IPC2-05
+        Contraseña: 12345
+        Nombre: Usuario5
+        Edad: 25
+        Correo: u5@gmail.com
+        Telefono: 68789844
+        |<f2>}"];
+node5 [label = "{<f1>|
+        ID: IPC2-06
+        Contraseña: 12345
+        Nombre: Usuario6
+        Edad: 25
+        Correo: u6@gmail.com
+        Telefono: 56486877
+        |<f2>}"];
+node0:f2 -> node1:f1;
+node1:f1 -> node0:f2;
+node1:f2 -> node2:f1;
+node2:f1 -> node1:f2;
+node2:f2 -> node3:f1;
+node3:f1 -> node2:f2;
+node3:f2 -> node4:f1;
+node4:f1 -> node3:f2;
+node4:f2 -> node5:f1;
+node5:f1 -> node4:f2;
+}

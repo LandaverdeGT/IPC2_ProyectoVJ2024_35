@@ -1,0 +1,18 @@
+digraph G {
+rankdir=LR;
+node [shape = record, height = .1]
+node0 [label = "{
+        ID: 1
+        Contraseña: 
+        Nombre: Rodrigo Hernández
+        Puesto: Vendedor
+        |<f1>}"];
+node1 [label = "{
+        ID: 2
+        Contraseña: 
+        Nombre: Alejandro de León
+        Puesto: Vendedor
+        |<f1>}"];
+node0 -> node1;
+node1 -> node0 [constraint=false];
+}

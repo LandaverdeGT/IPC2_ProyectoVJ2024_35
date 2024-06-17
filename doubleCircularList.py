@@ -49,38 +49,43 @@ class DoubleCircularList():
         return find
 
     def graphics(self):
-        dot_code = ''
-        file = open('reportedot/doubleCircularList.dot', 'w')
-        dot_code += '''digraph G {
-rankdir=LR;
-node [shape = record, height = .1]\n'''
-        current = self.head
-        counter = 0
-        while counter < self.size:
-            dot_code+='node'+str(counter)+' [label = "{<f1>|'+str(current.data)+'|<f2>}"];\n}'
-            current = current.next
-            counter += 1
+        codigodot = ''
+        archivo = open('reportedot/lista_doble_circular.dot', 'w')
+        codigodot+= '''digraph G {
+  rankdir=LR;
+  node [shape = record, height = .1]\n'''
+        #PRIMERO CREAMOS LOS NODOS
+        actual = self.head
+        contador = 0
+        while contador < self.size:
+            codigodot+='node'+str(contador)+' [label = "{<f1>|'+str(actual.data)+'|<f2>}"];\n'
+            actual = actual.next
+            contador += 1
 
-        counter = 0
-        current = self.head
-        while counter < self.size-1:
-            dot_code += 'node'+str(counter)+':f2 -> node'+str(counter+1)+':f1[dir=both];\n'
-            counter += 1
-            current = current.next
+        #AHORA CREAMOS LOS APUNTADORES
+        contador = 0
+        actual = self.head
+        while contador < self.size-1:
+            codigodot += 'node'+str(contador)+':f2  -> node'+str(contador+1)+':f1[dir=both];\n'
+            contador += 1
+            actual = actual.next
+        
+        #CREAMOS LOS APUNTADORES DE LOS EXTREMOS
+        codigodot += 'node0:f1 -> node'+str(self.size-1)+':f2 [dir=both constraint=false];\n'
 
-        dot_code += 'node:f2 -> node'+str(self.size-1)+':f1 [dir=both constraint=false];\n'
+        codigodot += '}'
 
-        dot_code += "}"
+        #ESCRIBIR EL ARCHIVO .DOT
+        archivo.write(codigodot)
+        archivo.close()
 
-        file.write(dot_code)
-        file.close()
+        #GENERAMOS LA IMAGEN
+        ruta_dot = 'reportedot/lista_doble_circular.dot'
+        ruta_png = 'reportes/lista_doble_circular.png'
+        comando = 'dot -Tpng '+ruta_dot+' -o '+ruta_png
+        os.system(comando)
 
-        dot_route = 'reportedot/doubleCircularList.dot'
-        png_route = 'reportes/doubleCircularList.png'
-        command = 'dot -Tpng '+dot_route+' -o '+png_route
-        os.system(command)
-        routa_out = os.path.abspath(png_route)
-        if os.path.isfile(routa_out):
-            os.startfile(routa_out)
-        else:
-            print(f"El archivo {routa_out} no existe.")
+        #ABRIMOS LA IMAGEN
+        #convierte la ruta relativa a absoluta
+        ruta_salida = os.path.abspath(ruta_png)
+        os.startfile(ruta_salida)

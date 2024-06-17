@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 from administratorView import AdministratorView
+from doubleList import DoubleList
+
+list = DoubleList()
 
 class Login():
     def __init__ (self):
@@ -23,14 +26,19 @@ class Login():
         self.root.mainloop()
 
     def LoginValidate(self):
+        global list
         global adminWindow
-        if self.entry1.get() == "admin" and self.entry2.get() == "admin":
+        if self.entry1.get() == "AdminIPC2" and self.entry2.get() == "IPC2VJ2024":
             messagebox.showinfo("Login", "Login exitoso")
-            AdministratorView().__init__()
+            AdministratorView()
             return True
         elif self.entry1.get() == "" or self.entry2.get() == "":
             messagebox.showerror("Login", "Ingresa un usuario y contraseña")
             return False
+        elif list.find_user(self.entry1.get):
+            messagebox.showinfo("Login", "Login exitoso")
+            self.root.destroy()
+            print("Usuario encontrado") 
         else:
             messagebox.showerror("Login", "Usuario o contraseña incorrectos")
             return False

@@ -1,17 +1,19 @@
 import xml.etree.ElementTree as ET
 from tkinter import filedialog, messagebox
-
 from doubleList import DoubleList
 from simpleCircularList import SimpleCircularList 
 from doubleCircularList import DoubleCircularList
 from client import Client
 from product import Product
 from employee import Employee
+from activitie import Activitie
+from matrizDispersa import MatrizDispersa
 
 #Instancia de las listas
-list = DoubleList()
+listSimple = DoubleList()
 circularList = SimpleCircularList()
 doubleCircularList = DoubleCircularList()
+matriz = MatrizDispersa()
 
 class XMLFunctions():
     def Load_XML():
@@ -21,9 +23,10 @@ class XMLFunctions():
         return ruta_xml
     
     def Read_XML(ruta_xml):
-        global list
+        global listSimple
         global circularList
         global doubleCircularList
+        global matriz
         tree = ET.parse(ruta_xml)
         root = tree.getroot()
         userName = ""
@@ -60,11 +63,11 @@ class XMLFunctions():
                     messagebox.showerror("Error", "El correo no es válido")
                 else:
                     newClient = Client(id, password, name, age, email, phone)
-                    if not list.find_user(id):
-                        list.insert(newClient)
+                    if not listSimple.find_user(id):
+                        listSimple.insert(newClient)
                     else:
                         messagebox.showerror("Error", "El usuario ya existe")
-            return list
+            return listSimple
         elif root.tag == "productos":
             for producto in root:
                 id = producto.attrib['id']
@@ -73,6 +76,7 @@ class XMLFunctions():
                 description = ""
                 category = ""
                 quanty = ""
+                image = ""
                 for subproducto in producto:
                     match subproducto.tag:
                         case "nombre":
@@ -85,6 +89,8 @@ class XMLFunctions():
                             category = subproducto.text
                         case "cantidad":
                             quanty = subproducto.text
+                        case "imagen":
+                            image = subproducto.text
                 print(f'''
                 ID: {id}
                 Nombre: {name}
@@ -92,12 +98,13 @@ class XMLFunctions():
                 Descripción: {description}
                 Categoría: {category}
                 Cantidad: {quanty}
+                Imagen: {image}
                 ''')
                 print("-------------------------------------------------")
                 if not doubleCircularList.findElement(id):
                     price = float(price)
                     quanty = int(quanty)
-                    newProduct = Product(id, price, description, category, quanty, name)
+                    newProduct = Product(id, name, price, description, category, quanty, image)
                     doubleCircularList.insert(newProduct)
                 else:
                     messagebox.showerror("Error", "El producto ya existe")
@@ -125,7 +132,40 @@ class XMLFunctions():
                 else:
                     messagebox.showerror("Error", "El empleado ya existe")
             return circularList
-            
+        elif root.tag == "actividades":
+            for actividad in root:
+                id = actividad.attrib['id']
+                name = ""
+                description = ""
+                employee = ""
+                day = ""
+                hour = ""
+                for subactividad in actividad:
+                    match subactividad.tag:
+                        case "nombre":
+                            name = subactividad.text
+                        case "descripcion":
+                            description = subactividad.text
+                        case "empleado":
+                            employee = subactividad.text
+                        case "dia":
+                            day = subactividad.text
+                            hour = subactividad.attrib['hora']
+                        
+                print(f'''
+                ID: {id}
+                Nombre: {name}
+                Descripción: {description}
+                Empleado: {employee}
+                Día: {day}
+                Hora: {hour}
+                ''')
+                print("-------------------------------------------------")
+                newActivitie = Activitie(id, name, description, employee, day, hour)
+                hour = int(hour)
+                day = int(day)
+                matriz.insertar(hour, day, newActivitie)
+            return matriz
 
 
 

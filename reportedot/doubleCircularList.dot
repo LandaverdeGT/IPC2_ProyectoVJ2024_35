@@ -1,5 +1,0 @@
-digraph G {
-rankdir=LR;
-node [shape = record, height = .1]
-node:f2 -> node-1:f1 [dir=both constraint=false];
-}
