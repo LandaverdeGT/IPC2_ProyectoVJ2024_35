@@ -1,0 +1,40 @@
+digraph G {
+graph [pad="0.5", nodesep="1", ranksep="1"];
+label="Matriz Dispersa"
+node [shape=box, height=0.8];
+	Fila7[style="filled" label = "7" fillcolor="white" group = 0];
+	Fila14[style="filled" label = "14" fillcolor="white" group = 0];
+
+edge[dir="both"];
+	Fila7 -> Fila14;
+
+edge[dir="both"]
+Columna1 -> NodoF7_C1[dir=""];
+Columna2 -> NodoF14_C2[dir=""];
+	Columna1[style="filled" label = "1" fillcolor="white" group = 1];
+	Columna2[style="filled" label = "2" fillcolor="white" group = 2];
+Columna1 -> Columna2;
+
+	{rank = same; Columna1; Columna2; }
+	NodoF7_C1[style="filled" label = "
+        ID: 2
+        Nombre: Limpieza de estanterías
+        Descripción: Limpiar y ordenar las estanterias del pasillo 1
+        Empleado: 1
+        Día: 1
+        Hora: 7
+        " group = 1];
+	Fila7 -> NodoF7_C1[dir=""];
+	NodoF14_C2[style="filled" label = "
+        ID: 1
+        Nombre: Atención al Cliente
+        Descripción: Atender a los clientes de la tienda
+        Empleado: 1
+        Día: 2
+        Hora: 14
+        " group = 2];
+	Fila14 -> NodoF14_C2[dir=""];
+	{ rank = same; Fila7; NodoF7_C1; }
+	{ rank = same; Fila14; NodoF14_C2; }
+
+}

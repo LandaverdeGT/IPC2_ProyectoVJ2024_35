@@ -1,0 +1,22 @@
+digraph G {
+  rankdir=LR;
+  node [shape = record, height = .1]
+node0 [label = "{<f1>|
+        ID: IPCM-1
+        Precio: 5000.0
+        Descripcion: Computadora de escritorio con procesador Intel Core i7, 16 GB de RAM, 1 TB de almacenamiento y tarjeta gráfica NVIDIA GeForce RTX 2080.
+        Categoria: Tecnología
+        Cantidad: 10
+        Imagen: C:\imagenesP1IPC2\imagen1.jpg
+        |<f2>}"];
+node1 [label = "{<f1>|
+        ID: IPCM-2
+        Precio: 2.5
+        Descripcion:  1 libra de frijoles negros
+        Categoria: Comida
+        Cantidad: 50
+        Imagen: C:\imagenesP1IPC2\imagen2.jpg
+        |<f2>}"];
+node0:f2  -> node1:f1[dir=both];
+node0:f1 -> node1:f2 [dir=both constraint=false];
+}
