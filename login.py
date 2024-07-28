@@ -10,6 +10,7 @@ class Login():
         self.root = Tk()
         self.root.title("Login")
         self.root.geometry("600x400")
+        self.root.config(bg="sky blue")
 
         global entry1
         global entry2
